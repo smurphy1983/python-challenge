@@ -5,8 +5,8 @@ import csv
 #Run function to calulate the information
 #Write file and print to terminal
 
-PyBankPath = os.path.join('..', '..', 'Homework', '03-Python', 'Instructions', 'PyBank', 'Resources'
-, 'budget_data.csv')
+PyBankPath = os.path.join('..', '..', 'Homework', '03-Python', 'Instructions', 'PyPoll', 'Resources'
+, 'election_data.csv')
 
 monthlist = []
 PLList = []
@@ -26,9 +26,9 @@ with open(PyBankPath, 'r') as budgetfile:
     budget_header = next(budget_reader)
 
     for row in budget_reader:
-        month = row[0]
+        month = row[1]
         monthlist.append(month)
-        PL = int(row[1])
+        PL = int(row[0])
         PLList.append(PL)
         NetPL += PL
 
