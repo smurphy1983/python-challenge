@@ -32,10 +32,8 @@ with open(PyBankPath, 'r') as budgetfile:
         PLList.append(PL)
         NetPL += PL
 
-        if len(monthlist) >= 1:
-            index = len(monthlist) - 2
-        else:
-            index = 0
+        index = len(monthlist) - 2
+        
 
         Start = PLList[index]
         Change = PL - Start
