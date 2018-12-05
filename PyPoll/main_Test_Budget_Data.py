@@ -6,7 +6,7 @@ import csv
 #Do calculations
 #Write and print data
 
-PyPollPath = os.path.join('..', '..', 'Homework', '03-Python', 'Instructions', 'PyPoll', 'Resources', 'election_data.csv')
+PyPollPath = os.path.join('..', '..', 'Homework', '03-Python', 'Instructions', 'PyBank', 'Resources', 'budget_data.csv')
 
 Voter_Id_List = []
 Candidate_List = []
@@ -39,7 +39,7 @@ with open (PyPollPath, 'r') as electionfile:
     for row in election_reader:
         Voter_Id = row[0] 
         Voter_Id_List.append(Voter_Id)
-        Candidate = row[2]
+        Candidate = row[1]
         Make_List()
         if Candidate == Candidate_List[0]:
             Vote_Count1+=1                      
@@ -83,7 +83,7 @@ print(f"Winner: {Winner}")
 
 Election_zip = zip(Candidate_List, PerVote_List, Vote_Count_List)
 
-Electionoutput = os.path.join("Election_Output.csv")
+Electionoutput = os.path.join("Election_Output_Budget_Data.csv")
 
 with open(Electionoutput, "w", newline="") as datafile:
     

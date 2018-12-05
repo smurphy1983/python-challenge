@@ -60,7 +60,7 @@ print(f"Average Change: {average_change}")
 print(f"The Best Month was {BestMonth} with a profit of ${Inc}")
 print(f"The Worst Month was {WorstMonth} with a loss of ${Dec}")
 
-Budgetoutput = os.path.join("Budget Output.csv")
+Budgetoutput = os.path.join("Budget_Output.csv")
 
 with open(Budgetoutput, "w", newline="") as datafile:
     
