@@ -1,10 +1,8 @@
 import os
 import csv
 
-#Read in Data
-#Run function to calulate the information
-#Write file and print to terminal
 
+#read in data from file
 PyBankPath = os.path.join('..', '..', 'Homework', '03-Python', 'Instructions', 'PyBank', 'Resources'
 , 'budget_data.csv')
 
@@ -26,20 +24,26 @@ with open(PyBankPath, 'r') as budgetfile:
     budget_header = next(budget_reader)
 
     for row in budget_reader:
+        #Creates a list of every month that can be used to calculate total number of months
+        #appends to the list with every run of the loop
         month = row[0]
         monthlist.append(month)
+        #creates a list of the profit and loss amounts that can be used to get a total and help 
+        #calulate the averages
         PL = int(row[1])
         PLList.append(PL)
         NetPL += PL
 
+        #generate a secondary index so that I can call back to calulate the monthly difference
         index = len(monthlist) - 2
        
-
+        #create a variable to hold the inital amount at the start of each month and the use 
+        #the newly created index to call back to the previous month
         Start = PLList[index]
         Change = PL - Start
         ChangeList.append(Change)
         NetChange += Change  
-
+        #use a for loop with if statement to calculate the best and worst change month
     for r in range(len(ChangeList)):   
         if ChangeList[r] >= Inc:
             Inc = ChangeList[r]
@@ -48,8 +52,10 @@ with open(PyBankPath, 'r') as budgetfile:
             Dec = ChangeList[r]
             WorstMonth = monthlist[r]
 
-average_change = NetChange/(len(ChangeList)-1)
 
+#calculate average
+average_change = NetChange/(len(ChangeList)-1)
+#print data to the terminal
 print(f"Financial Report")
 print(f"-----------------------------------------------")
 print(f"Total Number of months: {len(monthlist)}")
@@ -59,7 +65,7 @@ print(f"The Best Month was {BestMonth} with a profit of ${Inc}")
 print(f"The Worst Month was {WorstMonth} with a loss of ${Dec}")
 
 Budgetoutput = os.path.join("Budget_Output.csv")
-
+#write file to the directory
 with open(Budgetoutput, "w", newline="") as datafile:
     
     Budgetwriter = csv.writer(datafile, delimiter = ',')
